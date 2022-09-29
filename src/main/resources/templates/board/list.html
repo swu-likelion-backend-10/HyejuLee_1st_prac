@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.ofg">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>메인 화면</title>
@@ -7,5 +7,38 @@
 <body>
     <h1>인적사항 목록이 출력될 예정입니다.</h1>
     <a th:href="@{/post}">등록하기</a>
+    <table>
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>나이</th>
+            <th>학과</th>
+            <th>작성일</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="board : ${boardList}">
+            <td>
+                <span th:text="${board.id}"></span>
+            </td>
+            <td>
+                <a th:href="@{'/post/' + ${board.id}}">
+                    <span th:text="${board.name}"></span>
+                </a>
+            </td>
+            <td>
+                <span th:text="${board.age}"></span>
+            </td>
+            <td>
+                <span th:text="${board.major}"></span>
+            </td>
+            <td>
+                <span th:text="${#temporals.format(board.createdTime, 'yyyy-MM-dd HH:mm')}"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </body>
 </html>

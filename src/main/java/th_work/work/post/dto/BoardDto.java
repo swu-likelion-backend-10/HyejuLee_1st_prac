@@ -1,10 +1,15 @@
 package th_work.work.post.dto;
 
 import lombok.Builder;
+import lombok.Getter;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import th_work.work.post.domain.Board;
 
 import java.time.LocalDateTime;
 
+
+@Getter
 public class BoardDto {
 
     private Long id;
@@ -14,6 +19,8 @@ public class BoardDto {
     private String contents;
     private LocalDateTime createdTime;
     private LocalDateTime modifiedTime;
+
+
 
     public Board toEntity(){
         Board build = Board.builder()
@@ -25,6 +32,9 @@ public class BoardDto {
                 .build();
         return build;
     }
+
+
+
 
     @Builder
     public BoardDto(Long id, String name, Integer age, String major, String contents, LocalDateTime createdTime, LocalDateTime modifiedTime){
